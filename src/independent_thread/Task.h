@@ -46,12 +46,13 @@ public:
 private:
     /**
     @name 子线程入口函数，本例子使用C++11 async启动线程
-    @param Start接口的参数
     @param pTask task对象
     */
-    static void DoTask(std::string strParam1, std::string strParam2, CTask* pTask);
+    static void DoTask(CTask* pTask);
 
 private:
     std::atomic<ITaskCompleteCallback*> m_pCallback = nullptr;  //使用C++11的atomic保护回调指针
+    std::string m_strParam1;   //启动任务时输出参数，内部保存一份
+    std::string m_strParam2;
 };
 
